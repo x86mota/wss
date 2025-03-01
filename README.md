@@ -21,3 +21,6 @@ O teste técnico consiste na configuração de uma infraestrutura web básica, i
 
 **Infraestrutura na AWS**  
 - A empresa forneceu acesso a chave `.pem` de uma instância EC2 juntamente com o security group devidamente configurado.
+
+**Resolução**
+- O passo a passo da resolução original do teste pode ser lida [aqui](https://github.com/x86mota/wss/tree/main/TesteOrginal).
