@@ -1,6 +1,30 @@
-# DevOpsSquad Teste Técnico
+## Descrição do Teste
+O teste técnico consiste na configuração de uma infraestrutura web básica, incluindo servidores web, um site PHP e um site Wordpress, e um container Docker. Abaixo estão as instruções originais do teste:
 
-## Parametros
+**Site PHP**
+- Instalar e configurar o Nginx e o PHP-FPM em um servidor.  
+- O conteúdo do site deve estar localizado em `/var/www/html/site-exemplo`.  
+- Criar um arquivo `index.php` com a mensagem "Ola XXXX!".  
+- Configurar um Virtual Host no Nginx para que o site responda através da URL `http://php-felipe-cruz.devopssquad.com.br`.
+
+**Site Wordpress**  
+- Configurar o Wordpress em um site, chamado "Site do XXXX", utilizando o Nginx.  
+- Configurar o banco de dados necessário para o Wordpress no mesmo servidor.  
+- O site Wordpress e o painel de administração (wp-admin) devem estar acessíveis através da URL `http://blog-felipe-cruz.devopssquad.com.br`.
+
+**Docker**  
+- Executar um container Docker do Nginx, expondo a porta 8080.  
+- O site deverá exibir a página de boas-vindas do Nginx na URL `http://docker-felipe-cruz.devopsfsquad.com.br:8080`.
+
+**Infraestrutura na AWS**  
+- A empresa forneceu acesso a chave `.pem` de uma instância EC2 juntamente com o security group devidamente configurado.
+
+<br>
+
+## Reslução
+A resolução do teste foi feita manualmente, sem nenhum uso de automação, acessando diretamente a instância EC2.
+
+**Parametros**
 ```bash
 IP="3.81.219.38"
 KEY="${HOME}/Documents/DevOpsSquad/candidate.pem"
@@ -12,9 +36,7 @@ DOCKER="http://docker-felipe-cruz.devopsfsquad.com.br:8080"
 ssh -i $KEY $AWS_USER@$IP
 ```
 
-## Site PHP
-- Comando `cat /etc/os-release` para verificar qual distribuição estava utilizando e assim saber qual gerenciador de pacotes utilizar.
-
+### Site PHP
 - Instalação dos pacotes.
     ```bash
     dnf install nginx php-fpm -y
@@ -62,7 +84,7 @@ ssh -i $KEY $AWS_USER@$IP
     systemctl restart nginx.service php-fpm.service
     ```
 
-## WordPress
+### WordPress
 - Instalação do banco de dados MariaDB
     ```bash
     dnf install mariadb105-server-3:10.5.25-1.amzn2023.0.1.x86_64 php-mysqli
@@ -134,7 +156,7 @@ ssh -i $KEY $AWS_USER@$IP
     systemctl restart nginx.service php-fpm.service
     ```
 
-## Docker
+### Docker
 - Instalação
     ```bash
     dnf install docker -y
